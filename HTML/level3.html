@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level - 3</title>
+</head>
+<body>
+    
+    <table border="black">
+        <caption>
+            Food menu
+        </caption>
+
+        <tr>
+        <th rowspan="2"> Item </th>
+        <th colspan="2"> Price </th>
+        </tr>
+
+        <tr>
+            <td>INR</td>
+            <td>USD</td>
+        </tr>
+
+        <tr>
+            <td> frooti </td>
+            <td> 10 </td>
+            <td> 0.14 </td>
+        </tr>
+
+        <tr>
+            <td> chips </td>
+            <td> 20 </td>
+            <td> 0.28 </td>
+        </tr>
+
+    </table>
+
+    <hr>                                        <!-- Rowspan & Colspan -->
+
+    <table border="black">
+
+        <caption> A test table with merged cells </caption>
+        
+        <tr>
+            <th rowspan="2"> </th>
+            <th colspan="2"> Average </th>
+            <th rowspan="2"> Red eyes</th>
+        </tr>
+    
+         
+        <tr>
+            
+            <th> Height </th>
+            <th> weight </th>
+        </tr>
+    
+        <tr>
+            <td> Males </td>
+            <td> 1.9 </td>
+            <td> 0.003 </td>
+            <td> 40% </td>
+        </tr>
+    
+        <tr>
+            <td> Females </td>
+            <td> 1.7 </td>
+            <td> 0.002 </td>
+            <td> 43% </td>
+        </tr>
+    
+        </table>
+        
+        <hr>                                <!-- INPUT ELEMENT-->
+
+<form action="/server">
+
+       <div>
+       
+            <label for = " username "> Username :  </label>
+            <input type="text" placeholder="username" id="username">     <!-- user name -->
+
+       </div>
+        
+        <div>
+            
+                <label for="password"> Password : </label>
+                <input type = 'password' placeholder=" enter password" id="password">       <!-- password -->
+           
+        </div>
+        
+       <div>
+        
+            <label for="DOB"> DOB : </label>
+            <input type="number" placeholder=" enter your DOB " id=" DOB ">          <!-- date of birth -->
+        
+       </div>
+
+       <button> submit </button>
+       <button type="reset"> reset </button>
+
+</form>
+
+<hr>                                                  <!-- Bahut Important h -->
+
+<h1> Google </h1>
+
+<form action="https://www.google.com/search?">       
+
+    <input type="text" placeholder=" search in google " name="q">
+    <button> search </button>
+
+</form>
+
+<hr>                                            <!--checkbox-->
+                                          
+
+<form action="/server">
+<input type="checkbox" name="age" id="age">
+<label for="age"> i am 18+ </label>
+<button> submit </button>
+</form>
+
+<hr>                                                 <!-- DropDown -->
+                                           
+
+choose your profession 
+<form action="/server">
+<div>
+
+    <select name="profession" id="profession">
+        <option value="student"> student </option>
+        <option value="dev"> developer </option>
+    </select>
+
+</div>
+<button> submit </button>
+
+<hr>                                             <!-- Range -->
+Range
+
+<label for ="volume"> volume </label>
+<input type="range" name="vol" id="volume " min="0" max="100">
+<button> submit </button>
+
+<hr>                                        <!-- Practice Q's-->
+
+<h1> Registration From </h1>
+<input type="text" placeholder="first name">
+<input type="text" placeholder="last name">
+
+<div>
+
+    Please select gender                          <!-- Dropdown -->
+<select name="gender" id="gender">
+    <option value="male"> male </option>
+    <option value="Female"> Female </option>
+    <option value="other"> other </option>
+</select>
+
+</div>
+
+<div>                                              <!-- Radio -->
+    sex :
+    <input type="radio" name="gender" id="gender">
+    <label for ='male'>male</label>
+    <input type="radio" name="gender" id="gender">
+    <label for ='female'>female</label>
+    <input type="radio" name="gender" id="gender">
+    <label for ='other'>other</label>
+</div>
+
+<div>
+    Do you agree terms & conditions ?
+    <input type="checkbox" name="agree" id="agree" >                <!-- CheckBox -->
+    <label for="agree"> Yes, I agree </label>
+</div>
+Message:
+<div>
+    <label for="feedback"></label>
+    <textarea id="feedback"></textarea>
+
+</div>
+
+<button> register </button>
+
+<hr>
+
+<h1 color:red;> Feedback Form</h1>
+<div>
+    <label for="text"  >Name : </label>
+<input type="text" placeholder=" Write your name">
+
+</div>
+
+<div> 
+    <label for="text"  >Email : </label>
+<input type="text" placeholder=" Write your email">
+
+</div>
+Message :
+<div>
+    <label for="feedback"> </label>
+    <textarea id="Feedback"></textarea>
+</div>
+Rate us our of 5 :
+<div>
+    <label for="radio" id="radio">1 </label>
+    <input type="radio" name="radio">
+    <br>
+    <label for="radio" id="radio">2 </label>
+    <input type="radio" name="radio">
+    <br>
+    <label for="radio" id="radio">3 </label>
+    <input type="radio" name="radio">
+    <br>
+    <label for="radio" id="radio">4 </label>
+    <input type="radio" name="radio">
+    <br>
+    <label for="radio" id="radio">5 </label>
+    <input type="radio" name="radio">
+</div>
+<button> Send your Message! </button>
+
+
+
+
+</form>
+</body>
+</html>

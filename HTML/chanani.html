@@ -1,0 +1,196 @@
+<!-- <html>
+<head>
+<title> Background Color</title> 
+</head>
+<body background ="C:\Users\Banty\OneDrive\Desktop\HTML\spidy.png">
+ <h1 style="color: white;">Sample Web Page</h1>
+</body> 
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>MEGA TECH BLAST 2025 Promo</title>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js"></script>
+  <script src="ccapture.min.js"></script> <!-- include ccapture.js -->
+</head>
+<body>
+<script>
+let capturer;
+let capturing = false;
+let startTime;
+let duration = 30 * 1000; // 30 seconds
+let gadgets = [];
+function preload(){
+  // Optional: preload your gadget images and music here
+  // e.g., imgPhone = loadImage('iphone.png');
+}
+function setup(){
+  createCanvas(1280, 720);
+  textFont('Helvetica');
+  angleMode(DEGREES);
+  // Setup rain drops
+  for(let i = 0; i < 300; i++){
+    gadgets.push({
+      x: random(width),
+      y: random(-height, 0),
+      len: random(10, 20),
+      speed: random(4, 10)
+    });
+  }
+  
+  capturer = new CCapture({ format: 'webm', framerate: 60 });
+  frameRate(60);
+  startTime = millis();
+}
+function draw(){
+  let t = (millis() - startTime) / 1000; // seconds elapsed
+  if(t > duration / 1000) noLoop();
+
+  // Background: storm-gray
+  background(60, 60, 70);
+  
+  // Draw rain
+  stroke(180, 180, 220, 150);
+  for(let drop of gadgets){
+    line(drop.x, drop.y, drop.x, drop.y + drop.len);
+    drop.y += drop.speed;
+    if(drop.y > height){
+      drop.y = random(-100, 0);
+      drop.x = random(width);
+    }
+  }
+
+  // Lightning flash
+  if(frameCount % 200 < 5){
+    fill(255, 255, 240, 200);
+    noStroke();
+    rect(0,0,width,height);
+  }
+
+  // Title animations
+  push();
+  textSize(72);
+  fill(0, 255, 255);
+  textAlign(CENTER);
+  if(t < 3){
+    text("MEGA TECH BLAST 2025", width/2, height/3);
+  }
+  pop();
+
+  // Tagline at 3–8 sec
+  if(t > 3 && t < 8){
+    push();
+    textSize(48);
+    fill(255,255,0);
+    text("This Monsoon, starting 5th July – Get Ready to", width/2, height/2 - 20);
+    text("Grab Gadgets at the LOWEST Prices EVER!", width/2, height/2 + 40);
+    pop();
+  }
+
+  // Dancing silhouettes with gadgets at 8–15s
+  if(t > 8 && t < 15){
+    push();
+    noStroke();
+    fill(50, 50, 70, 200);
+    for(let i = 0; i < 5; i++){
+      let x = width * (i+1)/6 + sin(t*10 + i)*20;
+      let y = height * 0.75 + cos(t*8 + i)*10;
+      ellipse(x, y, 100, 200); // silhouette
+      fill(0, 255, 255);
+      ellipse(x, y - 50, 30); // gadget
+      fill(50,50,70,200);
+    }
+    pop();
+  }
+
+  // Flash deals popping (15–22s)
+  if(t > 15 && t < 22){
+    push();
+    let intensity = map(sin(t*10), -1,1,0.5,1);
+    scale(intensity);
+    fill(255, 20, 20);
+    textSize(64);
+    text("90% OFF!", width*0.3, height*0.4);
+    text("MEGA DROP!", width*0.7, height*0.6);
+    pop();
+  }
+
+  // Spinning gadgets (22–27s)
+  if(t > 22 && t < 27){
+    let a = (t - 22) * 360 * 2; // spin speed
+    push();
+    translate(width*0.3, height*0.5);
+    rotate(a);
+    fill(0,255,255);
+    rectMode(CENTER);
+    rect(0, 0, 200, 400); // phone
+    pop();
+    push();
+    translate(width*0.7, height*0.5);
+    rotate(-a);
+    ellipse(0, 0, 200); // speaker
+    pop();
+  }
+
+  // Amazon & Flipkart logos w/ flash (26–28s)
+  if(t > 26 && t < 28){
+    if(frameCount % 30 < 15){
+      fill(255);
+      textSize(48);
+      text("LIVE ON BOTH PLATFORMS", width/2, height*0.8);
+    }
+  }
+
+  // Countdown timer (28–30s)
+  if(t > 28){
+    let remain = max(0, 30 - floor(t));
+    push();
+    textSize(72);
+    fill(255,255,0);
+    text(`SALE STARTS 5TH JULY – ${nf(remain,2)}:00 HRS`, width/2, height*0.5);
+    pop();
+  }
+
+  // Final scene at 30s (freeze)
+  if(t >= 29.5){
+    push();
+    textSize(64);
+    fill(0,255,255);
+    text("MEGA TECH BLAST 2025", width/2, height*0.4);
+    textSize(48);
+    fill(255,255,0);
+    text("THE MONSOON TECH CARNIVAL OF A LIFETIME!", width/2, height*0.5);
+    // thunder+fireworks: simple circles
+    for(let i=0; i<5; i++){
+      fill(255, random(200,255),0, map(sin(frameCount*0.5+i), -1,1,0,255));
+      ellipse(width * (i+1)/6, height*0.7, 50 + sin(frameCount*5+i)*30);
+    }
+    pop();
+    noLoop();
+  }
+
+  // Capture frame
+  if(capturing) capturer.capture(canvas);
+}
+
+function keyPressed(){
+  if(key === 'r'){
+    if(!capturing){
+      capturer.start();
+      capturing = true;
+      console.log("🚀 Recording started");
+    } else {
+      capturer.stop();
+      capturer.save();
+      capturing = false;
+      console.log("🛑 Recording stopped & saved");
+    }
+  }
+}
+</script>
+<!-- optional ccapture.js library below -->
+<script src="https://cdn.jsdelivr.net/gh/spite/ccapture.js@1.1.0/build/CCapture.all.min.js"></script>
+</body>
+</html>
