@@ -4,8 +4,8 @@ This is a frontend clone of the Amazon homepage built using HTML and CSS.
 The project is created for learning web development and improving layout skills.
 
 ## Technologies Used
-- HTML5
-- CSS3
+- HTML
+- CSS
 - Flexbox
 
 ## Features
