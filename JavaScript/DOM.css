@@ -10,3 +10,18 @@ button{
     background-color: red ;
     color: white;
 }
+
+hr{
+    color: black;
+    height: 3px;
+    background-color: black;
+}
+
+.box{
+    height: 100px;
+    width: 100px;
+    border: 2px solid black;
+    margin: 5px;
+    background-color: aqua;
+    
+}
